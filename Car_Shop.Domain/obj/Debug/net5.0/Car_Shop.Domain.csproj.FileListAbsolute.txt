@@ -1,0 +1,11 @@
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\bin\Debug\net5.0\Car_Shop.Domain.deps.json
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\bin\Debug\net5.0\Car_Shop.Domain.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\bin\Debug\net5.0\ref\Car_Shop.Domain.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\bin\Debug\net5.0\Car_Shop.Domain.pdb
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.AssemblyInfoInputs.cache
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.AssemblyInfo.cs
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.csproj.CoreCompileInputs.cache
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\ref\Car_Shop.Domain.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.pdb

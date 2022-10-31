@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "757e1129-8cb8-4fb7-9358-3fd331cab7e1": {
+      "ProjectGuid": "757e1129-8cb8-4fb7-9358-3fd331cab7e1",
+      "DisplayName": "Car_Shop",
+      "ColorIndex": 0
+    },
+    "0a9154e1-c64d-4d25-aabb-d260a1cd8e32": {
+      "ProjectGuid": "0a9154e1-c64d-4d25-aabb-d260a1cd8e32",
+      "DisplayName": "Car_Shop.Domain",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

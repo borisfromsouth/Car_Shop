@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "sQcy6DO47uQcpIYylF3hZzr1lsRIvcwEmrGASSpHGemDMrWbGJgepS4pFVLgVtDiazNIVhe2qChPbrhKSuM9JQ==",
+  "success": true,
+  "projectFilePath": "D:\\Asp_Projects\\Car_Shop\\Car_shop\\Car_Shop.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
