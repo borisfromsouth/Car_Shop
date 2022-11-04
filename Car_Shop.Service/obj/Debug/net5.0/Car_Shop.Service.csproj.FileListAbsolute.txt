@@ -1,0 +1,17 @@
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\Car_Shop.Service.deps.json
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\Car_Shop.Service.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\ref\Car_Shop.Service.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\Car_Shop.Service.pdb
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\Car_Shop.DAL.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\Car_Shop.Domain.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\Car_Shop.DAL.pdb
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\bin\Debug\net5.0\Car_Shop.Domain.pdb
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.csproj.AssemblyReference.cache
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.AssemblyInfoInputs.cache
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.AssemblyInfo.cs
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.csproj.CoreCompileInputs.cache
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.csproj.CopyComplete
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\ref\Car_Shop.Service.dll
+D:\Asp_Projects\Car_Shop\Car_Shop.Service\obj\Debug\net5.0\Car_Shop.Service.pdb

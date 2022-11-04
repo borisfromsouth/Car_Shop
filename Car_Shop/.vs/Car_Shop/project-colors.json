@@ -10,7 +10,22 @@
       "ProjectGuid": "0a9154e1-c64d-4d25-aabb-d260a1cd8e32",
       "DisplayName": "Car_Shop.Domain",
       "ColorIndex": 1
+    },
+    "3178d7c0-ac58-4fa8-bdf9-94692c4c46d5": {
+      "ProjectGuid": "3178d7c0-ac58-4fa8-bdf9-94692c4c46d5",
+      "DisplayName": "Car_Shop.DAL",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Прочие файлы",
+      "ColorIndex": -1
+    },
+    "1a2f1a79-7361-47d0-8330-ed8867accf83": {
+      "ProjectGuid": "1a2f1a79-7361-47d0-8330-ed8867accf83",
+      "DisplayName": "Car_Shop.Service",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

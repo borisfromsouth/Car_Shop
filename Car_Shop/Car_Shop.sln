@@ -9,6 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car_Shop.Domain", "..\Car_S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{74C52560-390A-48D2-B4F5-28CD585976B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{07DD7CB8-D681-4853-96EC-9C983DB2174F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car_Shop.DAL", "..\Car_Shop.DAL\Car_Shop.DAL.csproj", "{3178D7C0-AC58-4FA8-BDF9-94692C4C46D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{16358E4A-0AD3-439D-8066-1C2B386436DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car_Shop.Service", "..\Car_Shop.Service\Car_Shop.Service.csproj", "{1A2F1A79-7361-47D0-8330-ED8867ACCF83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +31,22 @@ Global
 		{0A9154E1-C64D-4D25-AABB-D260A1CD8E32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A9154E1-C64D-4D25-AABB-D260A1CD8E32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A9154E1-C64D-4D25-AABB-D260A1CD8E32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3178D7C0-AC58-4FA8-BDF9-94692C4C46D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3178D7C0-AC58-4FA8-BDF9-94692C4C46D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3178D7C0-AC58-4FA8-BDF9-94692C4C46D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3178D7C0-AC58-4FA8-BDF9-94692C4C46D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A2F1A79-7361-47D0-8330-ED8867ACCF83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A2F1A79-7361-47D0-8330-ED8867ACCF83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A2F1A79-7361-47D0-8330-ED8867ACCF83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A2F1A79-7361-47D0-8330-ED8867ACCF83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0A9154E1-C64D-4D25-AABB-D260A1CD8E32} = {74C52560-390A-48D2-B4F5-28CD585976B3}
+		{3178D7C0-AC58-4FA8-BDF9-94692C4C46D5} = {07DD7CB8-D681-4853-96EC-9C983DB2174F}
+		{1A2F1A79-7361-47D0-8330-ED8867ACCF83} = {16358E4A-0AD3-439D-8066-1C2B386436DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7AEEC431-4C1D-4A9A-B933-CCFE803883A6}
