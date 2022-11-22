@@ -74,3 +74,4 @@ D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\Car_Shop.DAL.pdb
 D:\Asp_Projects\Car_Shop\Car_shop\obj\Debug\net5.0\Razor\Views\Car\GetCars.cshtml.g.cs
 D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\Car_Shop.Service.dll
 D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\Car_Shop.Service.pdb
+D:\Asp_Projects\Car_Shop\Car_shop\obj\Debug\net5.0\Razor\Views\Car\GetCar.cshtml.g.cs
