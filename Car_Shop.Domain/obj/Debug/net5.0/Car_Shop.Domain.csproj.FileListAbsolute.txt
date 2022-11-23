@@ -9,3 +9,4 @@ D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.csproj
 D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.dll
 D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\ref\Car_Shop.Domain.dll
 D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.pdb
+D:\Asp_Projects\Car_Shop\Car_Shop.Domain\obj\Debug\net5.0\Car_Shop.Domain.csproj.AssemblyReference.cache

@@ -75,3 +75,7 @@ D:\Asp_Projects\Car_Shop\Car_shop\obj\Debug\net5.0\Razor\Views\Car\GetCars.cshtm
 D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\Car_Shop.Service.dll
 D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\Car_Shop.Service.pdb
 D:\Asp_Projects\Car_Shop\Car_shop\obj\Debug\net5.0\Razor\Views\Car\GetCar.cshtml.g.cs
+D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\Asp_Projects\Car_Shop\Car_shop\bin\Debug\net5.0\System.IO.Pipelines.dll
+D:\Asp_Projects\Car_Shop\Car_shop\obj\Debug\net5.0\Razor\Views\Car\Save.cshtml.g.cs

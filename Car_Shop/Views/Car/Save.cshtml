@@ -1,0 +1,55 @@
+﻿@model Car_Shop.Domain.ViewModels.Car.CarViewModels;
+
+@{
+	ViewBag.Title = "Title";
+	Layout = "_Layout";
+}
+
+@{
+	var textTitle = Model?.Id == 0 ? "Изменение данных" : "Добавление данных";
+}
+
+<div style="padding: 10px;"></div>
+<div class="col-md-12">
+	<div class="card-body">
+		<div class="card card-outline-secondary" style="background-color: white">
+			<div class="card-header">
+				<h3 class="mb-0 text-center paragraphHome">@textTitle</h3>
+			</div>
+			<div class="card-body">
+				<form asp-action="Save" enctype="multipart/form-data"> @*asp-controller="Car"*@
+					<input asp-for="Id" hidden />
+					<div asp-validation-summary="All" style="font-size:23px; font-family:Impact, serif" class="text-danger text-center"></div>
+					<div class="form-group">
+						<label asp-for="Name"></label>
+						<input asp-for="Name" class="form-control" type="text">
+					</div>
+					<div class="form-group">
+						<label asp-for="Model"></label>
+						<input asp-for="Model" class="form-control" type="text">
+					</div>
+					<div class="form-group">
+						<label asp-for="Speed"></label>
+						<input asp-for="Speed" class="form-control" type="text">
+					</div>
+					<div class="form-group">
+						<label asp-for="Description"></label>
+						<input asp-for="Description" class="form-control" type="text">
+					</div>
+					<div class="input-group mb-3">
+						<span class="input-group-tetx">руб</span>
+						<input asp-for="Price" class="form-control" type="text">
+						<span class="input-group-tetx">.00</span>
+					</div>
+					<div class="form-group">
+						<select class="form-control" asp-for="TypeCar" id="carTypeId"></select>
+					</div>
+					<div class="input-group mb-3">
+						<input asp-for="Avatar" class="form-control" type="file">
+					</div>
+					<buttom class="btn btn-primary btn-lg float-right" type="submit">Отправить</buttom>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
