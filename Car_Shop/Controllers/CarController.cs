@@ -1,6 +1,6 @@
 ﻿using Car_Shop.DAL.Interfaces;
 using Car_Shop.Domain;
-using Car_Shop.Domain.ViewModels.Car;
+using Car_Shop.Domain.ViewModel.Car;
 using Car_Shop.Service.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,6 +8,7 @@ using System;
 using System.Threading.Tasks;
 using Car_Shop.Domain.Enum;
 using System.Linq;
+using System.IO;
 
 namespace Car_Shop.Controllers
 {
@@ -23,7 +24,7 @@ namespace Car_Shop.Controllers
         [HttpGet]
         public async Task<IActionResult> GetCars() // все машины
         {
-            var response = await _carService.GetCars();
+            var response = _carService.GetCars();
 			if (response.StatusCode == Domain.Enum.StatusCode.OK)
 			{
                 return View(response.Data.ToList());
@@ -64,25 +65,32 @@ namespace Car_Shop.Controllers
             {
                 return View(response.Data);
             }
-            return RedirectToAction("Error");
+            return View("Error", $"(response.Description)");
         }
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Save(CarViewModels model)
+        public async Task<IActionResult> Save(CarViewModel model)
         {
+            ModelState.Remove("DateCreate");
             if (ModelState.IsValid) 
             {
-                if (model.Id == 0)
+                if(model.Id == 0)
                 {
-                    await _carService.CreateCar(model);
+                    byte[] imageData;
+                    using (var binaryReader = new BinaryReader(model.Avatar.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)model.Avatar.Length);
+                    }
+                    await _carService.Create(model, imageData);
                 }
                 else
                 {
                     await _carService.Edit(model.Id, model);
                 }
+                return RedirectToAction("GetCars");
             }
-            return RedirectToAction("GetCars");
+            return View();
         }
     }
 }

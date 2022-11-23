@@ -1,6 +1,7 @@
 using Car_Shop.DAL;
 using Car_Shop.DAL.Interfaces;
 using Car_Shop.DAL.Repositories;
+using Car_Shop.Domain;
 using Car_Shop.Service.Implementations;
 using Car_Shop.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -30,7 +31,7 @@ namespace Car_Shop
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
-            services.AddScoped<ICarRepository, CarRepository>();
+            services.AddScoped<IBaseRepository<Car>, CarRepository>();
             services.AddScoped<ICarService, CarService>();
         }
 
@@ -47,11 +48,8 @@ namespace Car_Shop
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

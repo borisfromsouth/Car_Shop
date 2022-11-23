@@ -1,15 +1,9 @@
-﻿@model Car_Shop.Domain.Car
+﻿@model Car_Shop.Domain.ViewModel.Car.CarViewModel;
 
 @{
 	ViewBag.Title = "title";
 	Layout = "_Layout";
 }
-
-@*<h2>@Model.Name</h2>
-<h2>@Model.Model</h2>
-<h2>@Model.Description</h2>
-<h2>@Model.Price</h2>
-<h2>@Model.DateCreate</h2>*@
 
 <div style="padding: 10px;"></div>
 <div class="card mb-3">
@@ -37,19 +31,3 @@
 		</div>
 	</div>
 </div>
-
-
-@*<div class="col-md-4">
-	<div class="card-body">
-		<h5 class="card-title text-center">@Model?.Name</h5>
-		<p class="card-text"><b>Стоимость: </b>@Model?.Price</p>
-		<p class="card-text"><b>Тип: </b>@Model?.TypeCar</p>
-		<p class="card-text"><b>Модель: </b>@Model?.Model</p>
-		<p class="card-text"><small class="text-muted">Дата выпуска - @Model?.DateCreate</small></p>
-	</div>
-</div>
-<div class="col-md-4">
-	<div class="card-body">
-		<p class="card-text"><b>Описание: </b>@Model?.Description</p>
-	</div>
-</div>*@

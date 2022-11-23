@@ -5,7 +5,8 @@ namespace Car_Shop.Domain.Enum
 	{
 		CarNotFound = 0,
 		Error = 1,
+		UserNotFound = 2,
 		OK = 200,
-		InternalDerverError = 500
+		InternalServerError = 500
 	}
 }

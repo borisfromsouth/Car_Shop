@@ -2,190 +2,234 @@
 using Car_Shop.Domain;
 using Car_Shop.Domain.Enum;
 using Car_Shop.Domain.Response;
-using Car_Shop.Domain.ViewModels.Car;
+using Car_Shop.Domain.ViewModel.Car;
 using Car_Shop.Service.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Car_Shop.Service.Implementations
 {
 	public class CarService : ICarService
 	{
-		private readonly ICarRepository _carRepository;
+		private readonly IBaseRepository<Car> _carRepository;
 
-		public CarService(ICarRepository carRepository)
+		public CarService(IBaseRepository<Car> carRepository)
 		{
 			_carRepository = carRepository;
 		}
 
-		public async Task<IBaseResponse<Car>> GetCar(int id)
+		public async Task<IBaseResponse<CarViewModel>> GetCar(int id)
 		{
-			var baseResponse = new BaseResponse<Car>();
 			try
 			{
-				var car = await _carRepository.Get(id);
+				var car = await _carRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
 				if (car == null)
 				{
-					baseResponse.Description = "Элемент по id не найден";
-					baseResponse.StatusCode = StatusCode.CarNotFound;
-					return baseResponse;
+					return new BaseResponse<CarViewModel>()
+					{
+						Description = "Пользовательл не найден",
+						StatusCode = StatusCode.UserNotFound
+					};
 				}
-				baseResponse.Data = car;
-				baseResponse.StatusCode = StatusCode.OK;
 
-				return baseResponse;
+				var data = new CarViewModel()
+				{
+					DateCreate = car.DateCreate.ToLongDateString(),
+					Description = car.Description,
+					Name = car.Name,
+					Price = car.Price,
+					TypeCar = car.TypeCar.ToString(),
+					Speed = car.Speed,
+					Model = car.Model,
+					Image = car.Avatar,
+				};
+
+				return new BaseResponse<CarViewModel>()
+				{
+					StatusCode = StatusCode.OK,
+					Data = data
+				};
+
 			}
 			catch (Exception ex)
 			{
-				return new BaseResponse<Car>()
+				return new BaseResponse<CarViewModel>()
 				{
 					Description = $"[GetCar] : {ex.Message}",
-					StatusCode = StatusCode.InternalDerverError
+					StatusCode = StatusCode.InternalServerError
 				};
 			}
 		}
 
-		public async Task<IBaseResponse<Car>> GetByName(string name)
-		{
-			var baseResponse = new BaseResponse<Car>();
-			try
-			{
-				var car = await _carRepository.GetByName(name);
-				if (car == null)
-				{
-					baseResponse.Description = "Элемент по имени не найден";
-					baseResponse.StatusCode = StatusCode.CarNotFound;
-					return baseResponse;
-				}
-				baseResponse.Data = car;
-
+        public async Task<IBaseResponse<Dictionary<int, string>>> GetCar(string term)
+        {
+            var baseResponse = new BaseResponse<Dictionary<int, string>>();
+            try
+            {
+				var cars = await _carRepository.GetAll()
+					.Select(x => new CarViewModel()
+					{
+						Id = x.Id,
+						Speed = x.Speed,
+						Name = x.Name,
+						Description = x.Description,
+						Model = x.Model,
+						DateCreate = x.DateCreate.ToLongDateString(),
+						Price = x.Price,
+						TypeCar = x.TypeCar.ToString(),
+					})
+					.Where(x => EF.Functions.Like(x.Name, $"%{term}%"))
+					.ToDictionaryAsync(x => x.Id, t => t.Name);
+				
+				baseResponse.Data = cars;
 				return baseResponse;
-			}
-			catch (Exception ex)
-			{
-				return new BaseResponse<Car>()
-				{
-					Description = $"[GetCar] : {ex.Message}",
-					StatusCode = StatusCode.InternalDerverError
-				};
-			}
-		}
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Dictionary<int, string>>()
+                {
+                    Description = ex.Message,
+                    StatusCode = StatusCode.InternalServerError
+                };
+            }
+        }
 
-		public async Task<IBaseResponse<bool>> DeleteCar(int id)
+        public async Task<IBaseResponse<bool>> DeleteCar(int id)
 		{
-			var baseResponse = new BaseResponse<bool>();
 			try
 			{
-				var car = await _carRepository.Get(id);
+				var car = await _carRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
                 if (car == null)
                 {
-                    baseResponse.Description = "Объект не найден";
-                    baseResponse.StatusCode = StatusCode.CarNotFound;
-                    return baseResponse;
+					return new BaseResponse<bool>()
+					{
+						Description = "CarNotFound",
+						StatusCode = StatusCode.CarNotFound,
+						Data = false
+					};
                 }
 
-				await _carRepository.Delete(car);
-				return baseResponse;
+				return new BaseResponse<bool>()
+				{
+					Data = true,
+					StatusCode = StatusCode.OK
+				};
+
 			}
 			catch (Exception ex)
 			{
                 return new BaseResponse<bool>()
                 {
                     Description = $"[DeleteCar] : {ex.Message}",
-                    StatusCode = StatusCode.InternalDerverError
+                    StatusCode = StatusCode.InternalServerError
                 };
             }
         }
 
-        public async Task<IBaseResponse<IEnumerable<Car>>> GetCars()
+        public async Task<IBaseResponse<Car>> Create(CarViewModel model, byte[] imageData)
         {
-			var baseResponse = new BaseResponse<IEnumerable<Car>>();
-			try
-			{
-				var cars = await _carRepository.Select();
-				if(cars.Count == 0)
-				{
-					baseResponse.Description = "Найдено 0 элементов";
-					baseResponse.StatusCode = StatusCode.OK;
-					return baseResponse;
-				}
-				baseResponse.Data = cars;
-				baseResponse.StatusCode = StatusCode.OK;
-
-				return baseResponse;
-			}
-			catch(Exception ex)
-			{
-				return new BaseResponse<IEnumerable<Car>>()
-				{
-					Description = $"[GetCars] : {ex.Message}",
-					StatusCode = StatusCode.InternalDerverError
-				};
-			}
-        }
-
-        public async Task<IBaseResponse<CarViewModels>> CreateCar(CarViewModels model)
-        {
-           var baseResponse = new BaseResponse<CarViewModels>();
 			try
 			{
 				var car = new Car()
 				{
+					Name = model.Name,
+					Model = model.Model,
 					Description = model.Description,
 					DateCreate = DateTime.Now,
 					Speed = model.Speed,
-					Model = model.Model,
+					TypeCar = (TypeCar)Convert.ToInt32(model.TypeCar),
 					Price = model.Price,
-					Name = model.Name,
-					TypeCar = (TypeCar)Convert.ToInt32(model.TypeCar)
+					Avatar = imageData
 				};
 				
 				await _carRepository.Create(car);
-			}
-			catch (Exception ex)
-			{
-				return new BaseResponse<CarViewModels>()
+
+				return new BaseResponse<Car>()
 				{
-					Description = $"[CreateCar] : {ex.Message}",
-					StatusCode = StatusCode.InternalDerverError
-				};
-			}
-			return baseResponse;
-        }
-
-		public async Task<IBaseResponse<Car>> Edit(int id, CarViewModels model)
-        {
-			var baseResponse = new BaseResponse<Car>();
-			try
-			{
-				var car = await _carRepository.Get(id);
-				if(car == null)
-                {
-					baseResponse.Description = "Car not found";
-					baseResponse.StatusCode = StatusCode.Error;
-					return baseResponse;
-				}
-				car.Name = model.Name;
-				car.Description = model.Description;
-				car.Model = model.Model;
-				car.Speed = model.Speed;
-				car.Price = model.Price;
-				car.DateCreate = model.DateCreate;
-				car.TypeCar = (TypeCar)Convert.ToInt32(model.TypeCar);
-
-				await _carRepository.Update(car);
-				return baseResponse;
+					StatusCode = StatusCode.OK,
+					Data = car
+                };
 			}
 			catch (Exception ex)
 			{
 				return new BaseResponse<Car>()
 				{
-					Description = $"[UpdateCar] : {ex.Message}",
-					StatusCode = StatusCode.InternalDerverError
+					Description = $"[Create] : {ex.Message}",
+					StatusCode = StatusCode.InternalServerError
 				};
 			}
-			return baseResponse;
+        }
+
+		public async Task<IBaseResponse<Car>> Edit(int id, CarViewModel model)
+        {
+			try
+			{
+				var car = await _carRepository.GetAll().FirstOrDefaultAsync(x => x.Id == id);
+				if (car == null)
+                {
+					return new BaseResponse<Car>()
+					{
+						Description = "CarNotFound",
+						StatusCode = StatusCode.CarNotFound
+					};
+				}
+
+				car.Description = model.Description;
+				car.Model = model.Model;
+				car.Price = model.Price;
+				car.Speed = model.Speed;
+				car.DateCreate = DateTime.ParseExact(model.DateCreate, "yyyyMMdd HH:mm", null);
+				car.Name = model.Name;
+
+				await _carRepository.Update(car);
+
+				return new BaseResponse<Car>()
+				{
+					Data = car,
+					StatusCode = StatusCode.OK
+				};
+			}
+			catch (Exception ex)
+			{
+				return new BaseResponse<Car>()
+				{
+					Description = $"[Edit] : {ex.Message}",
+					StatusCode = StatusCode.InternalServerError
+				};
+			}
 		}
-	}
+
+		public IBaseResponse<List<Car>> GetCars()
+        {
+            try
+            {
+				var data = _carRepository.GetAll().ToList();
+                if (!data.Any())
+                {
+					return new BaseResponse<List<Car>>()
+					{
+						Description = "Ничего не найдено",
+						StatusCode = StatusCode.OK
+					};
+                }
+
+				return new BaseResponse<List<Car>>()
+				{
+					Data = data,
+					StatusCode = StatusCode.OK
+				};
+            }
+			catch (Exception ex)
+            {
+				return new BaseResponse<List<Car>>()
+				{
+					Description = $"[GetCars] : {ex.Message}",
+					StatusCode = StatusCode.InternalServerError
+				};
+            }
+        }
+    }
 }
