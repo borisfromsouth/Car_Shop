@@ -1,6 +1,7 @@
 ﻿using Car_Shop.DAL.Interfaces;
 using Car_Shop.Domain;
 using Car_Shop.Domain.Enum;
+using Car_Shop.Domain.Extensions;
 using Car_Shop.Domain.Response;
 using Car_Shop.Domain.ViewModel.Car;
 using Car_Shop.Service.Interfaces;
@@ -231,5 +232,28 @@ namespace Car_Shop.Service.Implementations
 				};
             }
         }
+
+		public BaseResponse<Dictionary<int, string>> GetTypes()
+        {
+            try
+            {
+				var types = ((TypeCar[])Enum.GetValues(typeof(TypeCar))).ToDictionary(k => (int)k, t => t.GetDisplayName());
+
+				return new BaseResponse<Dictionary<int, string>>()
+				{
+					Data = types,
+					StatusCode = StatusCode.OK
+				};
+            }
+            catch (Exception ex)
+            {
+				return new BaseResponse<Dictionary<int, string>>()
+				{
+					Description = ex.Message,
+					StatusCode = StatusCode.InternalServerError
+				};
+			}
+        }
+
     }
 }

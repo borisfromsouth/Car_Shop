@@ -25,7 +25,12 @@
       "ProjectGuid": "1a2f1a79-7361-47d0-8330-ed8867accf83",
       "DisplayName": "Car_Shop.Service",
       "ColorIndex": 3
+    },
+    "b3bf4c87-e928-4caa-8d71-3ec8e0910163": {
+      "ProjectGuid": "b3bf4c87-e928-4caa-8d71-3ec8e0910163",
+      "DisplayName": "Helpers",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

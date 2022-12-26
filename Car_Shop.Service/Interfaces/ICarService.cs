@@ -8,7 +8,7 @@ namespace Car_Shop.Service.Interfaces
 {
 	public interface ICarService
 	{
-		//BaseResponse<Dictionary<int, string>> GetTypes();
+		BaseResponse<Dictionary<int, string>> GetTypes();
 
 		IBaseResponse<List<Car>> GetCars();
 

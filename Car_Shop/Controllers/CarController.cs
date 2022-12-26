@@ -92,5 +92,12 @@ namespace Car_Shop.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public JsonResult GetTypes()
+        {
+            var types = _carService.GetTypes();
+            return Json(types.Data);
+        }
     }
 }
